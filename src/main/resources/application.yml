@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jblog/
+      suffix: .jsp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jblog
+    username: springadm
+    password: new1234!
+  jpa:
+    open-in-view: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+    properties:
+      ibernate.format_sql: true
+
+
+
+
+
+
+
+
+
+
+
+
