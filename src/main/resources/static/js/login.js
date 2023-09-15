@@ -3,13 +3,13 @@ let loginObject = {
     //init 함수 선언
     init: function () {
         $("#btn-login").on("click", () => {
-            _this.login();
+            this.login();
         });
     },
 
     login: function () {
         alert("로그인 요청됨");
-        //사용자가 입력한 값 username, password, email 추출
+        //사용자가 입력한 값 username, password 추출
         let data = {
             username: $("#username").val(),
             password: $("#password").val()

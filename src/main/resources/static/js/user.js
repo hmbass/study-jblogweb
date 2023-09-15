@@ -17,14 +17,13 @@ let userObject = {
     },
 
     insertUser: function () {
-        alert("회원가입 요청됨");
+        alert("회원가입 요청됨11111");
         //사용자가 입력한 값 username, password, email 추출
         let user = {
             username : $("#username").val(),
             password : $("#password").val(),
             email : $("#email").val()
         }
-
         // Ajax를 이용한 비동기 호출
         // done() 함수: 요청 처리에 성공했을 때 실행될 코드
         // Fail() 함수: 요청 처리에 실패했을 때 실행될 코드
@@ -35,6 +34,7 @@ let userObject = {
             contentType: "application/json; charset=utf-8"
         // 응답으로 들어온 JSON 데이터를 response로 받음
         }).done(function (response) {
+            alert("Done");
             // 응답 메시지를 콘솔에 출력하고 메인 페이지로 이동
             console.log(response);
             location = "/";

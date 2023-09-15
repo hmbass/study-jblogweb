@@ -20,7 +20,7 @@ public class LoginController {
     @PostMapping("/auth/login")
     public @ResponseBody ResponseDTO<?> login(@RequestBody User user, HttpSession session) {
         User findUser = userService.getUser(user.getUsername());
-
+        System.out.println(findUser.getUsername() + "\t" + findUser.getPassword());
         //검색 결과 유무와 사용자가 입력한 비밀번호가 유효한지 확인
         if(findUser.getUsername() == null){
             return new ResponseDTO<>(HttpStatus.BAD_REQUEST.value(),
@@ -29,11 +29,9 @@ public class LoginController {
           if(user.getPassword().equals(findUser.getPassword())) {
               // 로그인 성공 시 세션에 사용자 정보 저장
               session.setAttribute("principal", findUser);
-              return new ResponseDTO<>(HttpStatus.OK.value(),
-                      findUser.getUsername() + "님 로그인 성공");
+              return new ResponseDTO<>(HttpStatus.OK.value(),findUser.getUsername() + "님 로그인 성공");
           } else {
-              return new ResponseDTO<>(HttpStatus.BAD_REQUEST.value(),
-                      "비밀번호 오류");
+              return new ResponseDTO<>(HttpStatus.BAD_REQUEST.value(),"비밀번호 오류");
           }
         }
     }
