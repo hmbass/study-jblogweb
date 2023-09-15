@@ -33,7 +33,7 @@
                 </li>
             </ul>
             </c:if>
-            <c:if test="${sessionScope.principal == null}" >
+            <c:if test="${sessionScope.principal != null}" >
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="/user/updateUser">회원상세</a></li>
                     <li class="nav-item"><a class="nav-link" href="/post/insertPost">포스트등록</a></li>
