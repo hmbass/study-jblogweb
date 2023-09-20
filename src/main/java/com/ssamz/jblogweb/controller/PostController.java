@@ -12,16 +12,37 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
 
     @Autowired
     private PostService postService;
+
+    @DeleteMapping("/post/{id}")
+    public @ResponseBody ResponseDTO<?> deletePost(@PathVariable int id){
+        postService.deletePost(id);
+        return new ResponseDTO<>(HttpStatus.OK.value(), id + "번 포스트 삭제");
+    }
+
+    @PutMapping("/post")
+    public @ResponseBody ResponseDTO<?> updatePost(@RequestBody Post post){
+        postService.updatePost(post);
+        return new ResponseDTO<>(HttpStatus.OK.value(), post.getId() + "번 수정완료");
+    }
+
+    @GetMapping("/post/updatePost/{id}")
+    public String updatePost(@PathVariable int id, Model model){
+        model.addAttribute("post", postService.getPost(id));
+        return "post/updatePost";
+    }
+
+    @GetMapping("/post/{id}")
+    public String getPost(@PathVariable int id, Model model){
+        model.addAttribute("post", postService.getPost(id));
+        return "post/getPost";
+    }
 
     /*
     @GetMapping({"", "/"})

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="layout/header.jsp"%>
+<%@ include file="layout/header.jsp"%>
 <br>
 <div class="container mt-3">
     <c:if test="${!empty postList}">
@@ -7,7 +7,7 @@
             <c:forEach var="post" items="${postList.content}">
                 <div class="card-body">
                     <h4 class="card-title">${post.title}</h4>
-                    <a href="#" class="btn btn-secondary">상세보기</a>
+                    <a href="/post/${post.id}" class="btn btn-secondary">상세보기</a>
                 </div>
             </c:forEach>
         </div>
